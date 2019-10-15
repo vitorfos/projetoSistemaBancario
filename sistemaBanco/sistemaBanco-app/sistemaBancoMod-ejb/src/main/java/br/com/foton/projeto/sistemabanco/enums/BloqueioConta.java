@@ -4,13 +4,13 @@ public enum BloqueioConta {
 
 	BT("BLOQUEIO_TOTAL"), BC("BLOQUEIO_CREDITO"), BD("BLOQEUIO_DEBITO");
 
-	private String bloqueio;
+	private String valor;
 
-	private BloqueioConta(String bloqueio) {
-		this.bloqueio = bloqueio;
+	private BloqueioConta(String valor) {
+		this.valor= valor;
 	}
 
-	public String getBloqueio() {
-		return bloqueio;
+	public String getValor() {
+		return valor;
 	}
 }

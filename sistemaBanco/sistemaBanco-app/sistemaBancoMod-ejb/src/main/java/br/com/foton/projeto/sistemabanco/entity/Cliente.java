@@ -1,22 +1,24 @@
 package br.com.foton.projeto.sistemabanco.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.com.foton.projeto.sistemabanco.enums.Titularidade;
+import br.com.foton.projeto.sistemabanco.util.TitularidadeConversor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 public class Cliente extends Entidade {
 
 	/**
@@ -27,18 +29,16 @@ public class Cliente extends Entidade {
 	@Id 
 	@Column (name = "id_cliente")
 	private int idCliente;
-	@Column
-	private String titularidade;
+	
+	@Convert(converter = TitularidadeConversor.class)
+	@Column(name = "titularidade")
+	private Titularidade titularidade;
 
 	//Cliente tem a FK de Pessoa
 	@Column (name = "id_pessoa")
 	private int idPessoa;
 	
-	@OneToOne
+	@OneToOne (fetch = FetchType.LAZY, optional = true)
 	@JoinColumn (name = "id_pessoa", referencedColumnName = "id_pessoa", foreignKey = @ForeignKey(name = "id_pessoaFK1"), insertable = false, updatable = false)
-	private Pessoa pessoa;
-	
-	//ClienteConta tem a FK de Cliente
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
-	private List<ClienteConta> clienteConta;
+	private Pessoa pessoa;      
 }

@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import br.com.foton.projeto.sistemabanco.entity.Conta;
 import br.com.foton.projeto.sistemabanco.entity.Entidade;
 
 public abstract class Dao<T extends Entidade> {
@@ -28,9 +27,9 @@ public abstract class Dao<T extends Entidade> {
 		this.salva(entidade);
 	}
 
-	public void salva(Entidade entidade) {
+	public Entidade salva(Entidade entidade) {
 
-		em.merge(entidade);
+		return em.merge(entidade);
 
 	}
 
@@ -53,12 +52,11 @@ public abstract class Dao<T extends Entidade> {
 	
 	public Entidade retornaPorId(int id) {
 
-		Query consulta = getEntityManager().createQuery("select c from " + classeEntidade.getName() + " c" + " where id = " +id,
+		Query consulta = getEntityManager().createQuery("from "+classeEntidade.getSimpleName()+" where id_"+classeEntidade.getSimpleName().substring(0,1).toLowerCase().concat(classeEntidade.getSimpleName().substring(1))+" = " +id,
 				classeEntidade);
-		Conta conta = (Conta) consulta.getSingleResult();
-		
-		return conta;
+		return (Entidade) consulta.getSingleResult();
 
 	}
+
 
 }
