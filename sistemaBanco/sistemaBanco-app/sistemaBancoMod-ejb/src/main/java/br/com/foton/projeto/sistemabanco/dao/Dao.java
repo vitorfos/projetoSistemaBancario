@@ -23,24 +23,25 @@ public abstract class Dao<T extends Entidade> {
 		return em;
 	}
 
-	public void atualiza(Entidade entidade) {
-		this.salva(entidade);
+	public void atualizar(Entidade entidade) {
+		this.salvar(entidade);
 	}
 
-	public Entidade salva(Entidade entidade) {
+	public Entidade salvar(Entidade entidade) {
 
 		return em.merge(entidade);
 
 	}
 
-	public void remove(int id) {
+	public void remover(int id) {
 
 		Query remover = getEntityManager().createQuery("delete from " + classeEntidade.getName() + " where id = " + id);
 		remover.executeUpdate();
 
 	}
 
-	public List<T> retornaTodos() {
+	@SuppressWarnings("unchecked")
+	public List<T> retornarTodos() {
 
 		Query consulta = getEntityManager().createQuery("select c from " + classeEntidade.getName() + " c",
 				classeEntidade);
@@ -49,14 +50,18 @@ public abstract class Dao<T extends Entidade> {
 		return resultados;
 
 	}
-	
-	public Entidade retornaPorId(int id) {
 
-		Query consulta = getEntityManager().createQuery("from "+classeEntidade.getSimpleName()+" where id_"+classeEntidade.getSimpleName().substring(0,1).toLowerCase().concat(classeEntidade.getSimpleName().substring(1))+" = " +id,
-				classeEntidade);
+	public Entidade retornarPorId(int id) {
+
+		Query consulta = getEntityManager()
+				.createQuery(
+						"from " + classeEntidade.getSimpleName() + " where id_"
+								+ classeEntidade.getSimpleName().substring(0, 1).toLowerCase()
+										.concat(classeEntidade.getSimpleName().substring(1))
+								+ " = " + id,
+						classeEntidade);
 		return (Entidade) consulta.getSingleResult();
 
 	}
-
 
 }

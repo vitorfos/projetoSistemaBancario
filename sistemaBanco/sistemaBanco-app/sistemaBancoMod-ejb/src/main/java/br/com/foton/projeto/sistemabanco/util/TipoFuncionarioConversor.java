@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 
 import br.com.foton.projeto.sistemabanco.enums.TipoFuncionario;
 
-public class TipoFuncionarioConversor  implements AttributeConverter<TipoFuncionario, String>{
+public class TipoFuncionarioConversor implements AttributeConverter<TipoFuncionario, String> {
 
 	@Override
 	public String convertToDatabaseColumn(TipoFuncionario tipoFuncionario) {

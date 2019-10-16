@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 
 import br.com.foton.projeto.sistemabanco.enums.Titularidade;
 
-public class TitularidadeConversor implements AttributeConverter<Titularidade, String>{
+public class TitularidadeConversor implements AttributeConverter<Titularidade, String> {
 
 	@Override
 	public String convertToDatabaseColumn(Titularidade titularidade) {

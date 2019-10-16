@@ -25,7 +25,7 @@ public class Funcionario extends Entidade {
 	 * 
 	 */
 	private static final long serialVersionUID = 2131431787114488991L;
-	
+
 	@Id
 	@Column(name = "id_funcionario")
 	private int idFuncionario;
@@ -35,21 +35,12 @@ public class Funcionario extends Entidade {
 	@Column(name = "tipo_funcionario")
 	private TipoFuncionario tipoFuncionario;
 
-
 	// Funcionario tem a FK de Pessoa
 	@Column(name = "id_pessoa")
 	private int idPessoa;
 
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa", foreignKey = @ForeignKey(name = "id_pessoaFK"), insertable = false, updatable = false)
 	private Pessoa pessoa;
-	
-//	@Column 
-//	private Funcionario funcionario; 
-	
-	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarios")
-	//@JoinColumn(name="funcionarioFK", referencedColumnName="funcionario_id")
-	//private List<Funcionario> funcionarios;
-	
 
 }

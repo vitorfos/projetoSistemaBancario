@@ -13,23 +13,23 @@ import br.com.foton.projeto.sistemabanco.enums.TipoOperacao;
 public class BeanContaSalario extends BeanConta {
 
 	private static final long serialVersionUID = -5428061635036848588L;
-	
+
 	@Inject
 	private ContaSalarioDao daoContaSal;
-	
+
 	@Inject
 	private HistoricoTransacaoDao daoHistoricoTransacao;
-	
+
 	@Override
 	public Conta debito(double valor, Conta conta) {
 		try {
 			if (conta.getSaldo() > valor && valor > 0) {
 				conta.setSaldo((conta.getSaldo() - (valor * Constante.TX_OP_DEBITO_CONTA_SALARIO)));
-				daoContaSal.salva(conta);
-				
+				daoContaSal.salvar(conta);
+
 				TipoOperacao tipoOperacao = TipoOperacao.DEB;
 				try {
-					daoHistoricoTransacao.gravaHistorico(conta, conta, valor, tipoOperacao);
+					daoHistoricoTransacao.gravarHistorico(conta, conta, valor, tipoOperacao);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

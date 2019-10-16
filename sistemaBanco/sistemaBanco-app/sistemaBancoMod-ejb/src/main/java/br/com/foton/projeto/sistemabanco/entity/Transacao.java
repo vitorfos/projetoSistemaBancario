@@ -34,44 +34,34 @@ public class Transacao extends Entidade {
 	@Id
 	@Column(name = "id_transacao")
 	private int idTransacao;
-	
+
 	@Column(name = "numero_contaOrigem")
 	private int numeroContaOrigem;
-	
+
 	@Column(name = "numero_contaDestino")
 	private int numeroContaDestino;
-	
+
 	@Column(name = "valor")
 	private double valorTransacao;
-	
+
 	@Convert(converter = TipoOperacaoConversor.class)
 	@Column(name = "tipo_operacao")
 	private TipoOperacao tipoOperacao;
 
-	//Transacao tem a FK de conta (para contaOrigem)
-	@Column(name = "id_contaOrigem",
-			nullable = true)
+	// Transacao tem a FK de conta (para contaOrigem)
+	@Column(name = "id_contaOrigem", nullable = true)
 	private int idContaOrigem;
-	
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
-	@JoinColumn (name = "id_contaOrigem", 
-				referencedColumnName = "id_conta", 
-				foreignKey = @ForeignKey(name = "id_contaOrigemFK"), 
-				insertable = false, 
-				updatable = false)
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "id_contaOrigem", referencedColumnName = "id_conta", foreignKey = @ForeignKey(name = "id_contaOrigemFK"), insertable = false, updatable = false)
 	private Conta contaOrigem;
-	
-	//Transacao tem a FK de conta (para contaDestino)
-	@Column(name = "id_contaDestino",
-			nullable = true)
+
+	// Transacao tem a FK de conta (para contaDestino)
+	@Column(name = "id_contaDestino", nullable = true)
 	private int idContaDestino;
-	
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
-	@JoinColumn (name = "id_contaDestino", 
-				referencedColumnName = "id_conta", 
-				foreignKey = @ForeignKey(name = "id_contaDestinoFK"), 
-				insertable = false,
-				updatable = false)
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "id_contaDestino", referencedColumnName = "id_conta", foreignKey = @ForeignKey(name = "id_contaDestinoFK"), insertable = false, updatable = false)
 	private Conta contaDestino;
 
 }

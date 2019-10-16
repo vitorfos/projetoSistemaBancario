@@ -48,7 +48,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta conta = criaConta();
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() + (100 * 1.05));
 		beanContaPoupCor.credito(100, conta);
@@ -62,7 +62,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta conta = criaConta();
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() + ((-100) * 1.05));
 		beanContaPoupCor.credito(-100, conta);
@@ -80,7 +80,7 @@ public class BeanContaPoupancaCorrenteTest
 		
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(conta.getSaldo() + (100 * 1.05));
 		beanContaPoupCor.credito(100, conta);
@@ -97,7 +97,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta conta = criaConta();
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() - (100 * 1.005));
 		beanContaPoupCor.debito(100, conta);
@@ -111,7 +111,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta conta = criaConta();
 		Conta contaEsperada = criaConta();
 
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() + ((-100) * 1.005));
 		beanContaPoupCor.debito((-100), conta);
@@ -125,7 +125,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta conta = criaConta();
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() - (600 * 1.005));
 		beanContaPoupCor.debito(600, conta);
@@ -143,7 +143,7 @@ public class BeanContaPoupancaCorrenteTest
 		
 		Conta contaEsperada = criaConta();
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaEsperada.setSaldo(contaEsperada.getSaldo() - (100 * 1.005));
 		beanContaPoupCor.debito(100, conta);
@@ -173,7 +173,7 @@ public class BeanContaPoupancaCorrenteTest
 		contaDestinoEsperada.setNumero(654321);
 		contaDestinoEsperada.setSaldo(500);
 		
-		Mockito.when(daoConta.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoConta.salvar(Mockito.any())).thenReturn(null);
 		
 		contaOrigemEsperada.setSaldo(contaOrigemEsperada.getSaldo() -  100);
 		contaDestinoEsperada.setSaldo(contaDestinoEsperada.getSaldo() + 100);
@@ -203,7 +203,7 @@ public class BeanContaPoupancaCorrenteTest
 		contaDestinoEsperada.setNumero(654321);
 		contaDestinoEsperada.setSaldo(1000);
 		
-		Mockito.when(daoConta.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoConta.salvar(Mockito.any())).thenReturn(null);
 		
 		contaOrigemEsperada.setSaldo(contaOrigemEsperada.getSaldo() - (-100));
 		contaDestinoEsperada.setSaldo(contaDestinoEsperada.getSaldo() + (-100));
@@ -234,7 +234,7 @@ public class BeanContaPoupancaCorrenteTest
 		contaDestinoEsperada.setNumero(654321);
 		contaDestinoEsperada.setSaldo(1000);
 		
-		Mockito.when(daoConta.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoConta.salvar(Mockito.any())).thenReturn(null);
 		
 		contaOrigemEsperada.setSaldo(contaOrigemEsperada.getSaldo() -  700);
 		contaDestinoEsperada.setSaldo(contaDestinoEsperada.getSaldo() + 700);
@@ -254,7 +254,7 @@ public class BeanContaPoupancaCorrenteTest
 		Conta contaDestino = criaConta();
 		Conta contaDestinoEsperada = criaConta();
 		
-		Mockito.when(daoConta.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoConta.salvar(Mockito.any())).thenReturn(null);
 		
 		contaOrigemEsperada.setSaldo(contaOrigemEsperada.getSaldo() -  100);
 		contaDestinoEsperada.setSaldo(contaDestinoEsperada.getSaldo() + 100);
@@ -284,12 +284,12 @@ public class BeanContaPoupancaCorrenteTest
 		contaOrigemEsperada.setNumero(-654321);
 		contaOrigemEsperada.setSaldo(1000);
 		
-		Mockito.when(daoContaPoupCor.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoContaPoupCor.salvar(Mockito.any())).thenReturn(null);
 		
 		contaOrigemEsperada.setSaldo(contaOrigemEsperada.getSaldo() -  700);
 		contaDestinoEsperada.setSaldo(contaDestinoEsperada.getSaldo() + 700);
 		
-		Mockito.when(daoConta.salva(Mockito.any())).thenReturn(null);
+		Mockito.when(daoConta.salvar(Mockito.any())).thenReturn(null);
 		
 		assertNotEquals(contaOrigemEsperada.getSaldo(), contaOrigem.getSaldo(), 0.0000001);
 		assertNotEquals(contaDestinoEsperada.getSaldo(), contaDestino.getSaldo(), 0.0000001);

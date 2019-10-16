@@ -7,7 +7,7 @@ public enum BloqueioConta {
 	private String valor;
 
 	private BloqueioConta(String valor) {
-		this.valor= valor;
+		this.valor = valor;
 	}
 
 	public String getValor() {

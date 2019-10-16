@@ -51,7 +51,7 @@ public class Teste {
 
 	@Inject
 	private HistoricoTransacaoDao daoTransacao;
-	
+
 	private ClienteContaDao daoClienteConta;
 
 	@EJB
@@ -63,69 +63,69 @@ public class Teste {
 	@PostConstruct
 	public void novaTransacao() {
 		// Teste de Transferencia
-		Conta contaOrigem = (Conta) daoConta.retornaPorId(2);
-		Conta contaDestino = (Conta) daoConta.retornaPorId(1);
+		Conta contaOrigem = (Conta) daoConta.retornarPorId(2);
+		Conta contaDestino = (Conta) daoConta.retornarPorId(1);
 		beanContaSal.transferencia(170, contaOrigem, contaDestino);
 	}
-	
+
 	public Endereco inserirEndereco() {
 		Endereco endereco = new Endereco();
 		endereco.setCep(000000);
 		endereco.setCidade("Cidade");
 		endereco.setEstado("Estado");
-		
-		daoEndereco.salva(endereco);
+
+		daoEndereco.salvar(endereco);
 		return endereco;
 	}
+
 	public Pessoa inserirPessoa() {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setTipoPessoa(TipoPessoa.F);
 		pessoa.setCpf(000000);
 		pessoa.setCnpj(00000);
 		pessoa.setEndereco(inserirEndereco());
-		
-		daoPessoa.salva(pessoa);
+
+		daoPessoa.salvar(pessoa);
 		return pessoa;
 	}
-	
+
 	public Funcionario inserirFuncionario() {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setSetor("");
 		funcionario.setTipoFuncionario(TipoFuncionario.GER);
 		funcionario.setPessoa(inserirPessoa());
-		
-		daoFuncionario.salva(funcionario);
+
+		daoFuncionario.salvar(funcionario);
 		return funcionario;
 	}
-	
+
 	public Cliente inserirCliente() {
 		Cliente cliente = new Cliente();
 		cliente.setTitularidade(Titularidade.TIT);
 		cliente.setPessoa(inserirPessoa());
-		
-		daoCliente.salva(cliente);
+
+		daoCliente.salvar(cliente);
 		return cliente;
 	}
-	
+
 	public Conta adicionarConta() {
 		Conta conta = new Conta();
 		conta.setAgencia(00000);
 		conta.setNumero(000000);
 		conta.setSaldo(00000);
 		conta.setFuncionario(inserirFuncionario());
-		
-		daoConta.salva(conta);
+
+		daoConta.salvar(conta);
 		adicionarClienteConta(inserirCliente(), conta);
 		return conta;
 	}
-	
-	public void adicionarClienteConta (Cliente cliente, Conta conta) {
+
+	public void adicionarClienteConta(Cliente cliente, Conta conta) {
 		ClienteConta clienteConta = new ClienteConta();
 		clienteConta.setCliente(inserirCliente());
 		clienteConta.setConta(adicionarConta());
-		
-		daoClienteConta.salva(clienteConta);
+
+		daoClienteConta.salvar(clienteConta);
 	}
-	
 
 }

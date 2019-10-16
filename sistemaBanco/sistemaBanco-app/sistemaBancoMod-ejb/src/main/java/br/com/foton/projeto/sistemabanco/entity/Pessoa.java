@@ -19,13 +19,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Pessoa extends Entidade{
+public class Pessoa extends Entidade {
 
-	
 	private static final long serialVersionUID = -7673541242396005106L;
-	
-	@Id 
-	@Column (name = "id_pessoa")
+
+	@Id
+	@Column(name = "id_pessoa")
 	private int idPessoa;
 	@Column
 	private String nome;
@@ -38,14 +37,13 @@ public class Pessoa extends Entidade{
 	private int cpf;
 	@Column
 	private int cnpj;
-	
 
-	//Pessoa tem a FK de Endereco
-	@Column (name="id_endereco")
+	// Pessoa tem a FK de Endereco
+	@Column(name = "id_endereco")
 	private int idEndereco;
-	
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
-	@JoinColumn (name = "id_endereco", referencedColumnName = "id_endereco", foreignKey = @ForeignKey(name = "id_enderecoFK"), insertable = false, updatable = false)
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco", foreignKey = @ForeignKey(name = "id_enderecoFK"), insertable = false, updatable = false)
 	private Endereco endereco;
 
 }

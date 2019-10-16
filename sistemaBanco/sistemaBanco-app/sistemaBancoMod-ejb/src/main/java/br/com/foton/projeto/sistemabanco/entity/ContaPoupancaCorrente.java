@@ -26,25 +26,25 @@ public class ContaPoupancaCorrente extends Entidade {
 	 * 
 	 */
 	private static final long serialVersionUID = -6374076958200004281L;
-	
+
 	@Id
 	private int id_contaPoupancaCorrente;
-	@Column (name = "cheque_especial")
+	@Column(name = "cheque_especial")
 	private String chequeEspecial;
-	
+
 	@Convert(converter = TipoContaConversor.class)
-	@Column (name = "tipo_conta")
+	@Column(name = "tipo_conta")
 	private String tipoConta;
 
 	@Convert(converter = BloqueioContaConversor.class)
 	@Column(name = "bloqueio")
-	private BloqueioConta bloqueio; 
-	
-	//Conta Poupanca Corrente tem a FK de Conta
+	private BloqueioConta bloqueio;
+
+	// Conta Poupanca Corrente tem a FK de Conta
 	@Column(name = "id_conta")
 	private int idConta;
 
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "id_conta", referencedColumnName = "id_conta", foreignKey = @ForeignKey(name = "id_contaFK"), insertable = false, updatable = false)
 	private Conta conta;
 

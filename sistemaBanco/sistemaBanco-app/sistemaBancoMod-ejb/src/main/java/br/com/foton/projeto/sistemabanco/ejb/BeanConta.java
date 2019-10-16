@@ -12,10 +12,10 @@ import br.com.foton.projeto.sistemabanco.enums.TipoOperacao;
 public abstract class BeanConta implements Serializable {
 
 	private static final long serialVersionUID = -1242388914027391591L;
-	
+
 	@Inject
 	private ContaDao daoConta;
-	
+
 	@Inject
 	private HistoricoTransacaoDao daoHistoricoTransacao;
 
@@ -23,11 +23,11 @@ public abstract class BeanConta implements Serializable {
 		try {
 			if (valor > 0 && conta.getNumero() != 0) {
 				conta.setSaldo(conta.getSaldo() + valor);
-				daoConta.salva(conta);
-				
+				daoConta.salvar(conta);
+
 				TipoOperacao tipoOperacao = TipoOperacao.CRED;
 				try {
-					daoHistoricoTransacao.gravaHistorico(conta, conta, valor, tipoOperacao);
+					daoHistoricoTransacao.gravarHistorico(conta, conta, valor, tipoOperacao);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,12 +46,12 @@ public abstract class BeanConta implements Serializable {
 			if (valor <= contaOrigem.getSaldo() && valor > 0 && contaOrigem.getNumero() != contaDestino.getNumero()) {
 				contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);
 				contaDestino.setSaldo(contaDestino.getSaldo() + valor);
-				daoConta.salva(contaOrigem);
-				daoConta.salva(contaDestino);
-				
+				daoConta.salvar(contaOrigem);
+				daoConta.salvar(contaDestino);
+
 				TipoOperacao tipoOperacao = TipoOperacao.TRANSF;
 				try {
-					daoHistoricoTransacao.gravaHistorico(contaOrigem, contaDestino, valor, tipoOperacao);
+					daoHistoricoTransacao.gravarHistorico(contaOrigem, contaDestino, valor, tipoOperacao);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,9 +59,9 @@ public abstract class BeanConta implements Serializable {
 				System.out.println("Valor a ser transferido precisa ser maior que zero.");
 			} else if (contaOrigem.getNumero() != contaDestino.getNumero()) {
 				System.out.println("A operação de transferência deve ser realizada entre contas diferentes.");
-			} else {	
+			} else {
 				System.out.println("A conta não possui saldo suficiente para realizar a transferência.");
-			} 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

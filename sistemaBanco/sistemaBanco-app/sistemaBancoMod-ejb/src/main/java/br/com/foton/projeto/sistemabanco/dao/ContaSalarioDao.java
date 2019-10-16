@@ -7,6 +7,5 @@ public class ContaSalarioDao extends Dao<ContaSalario> {
 	public ContaSalarioDao() {
 		super(ContaSalario.class);
 	}
-		
 
 }

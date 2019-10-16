@@ -14,23 +14,23 @@ import br.com.foton.projeto.sistemabanco.negocio.OperacaoServico;
 public class BeanContaPoupancaCorrente extends BeanConta {
 
 	private static final long serialVersionUID = -4304726078724448172L;
-	
+
 	@Inject
 	private ContaPoupancaCorrenteDao daoContaPoupCor;
-	
+
 	@Inject
 	private HistoricoTransacaoDao daoHistoricoTransacao;
-	
+
 	@Override
 	public Conta debito(double valor, Conta conta) {
 		try {
-			if (valor < conta.getSaldo() && valor > 0 && conta.getNumero()!= 0) {
+			if (valor < conta.getSaldo() && valor > 0 && conta.getNumero() != 0) {
 				conta.setSaldo((conta.getSaldo() - (valor * Constante.TX_OP_DEBITO_CONTA_POUP_CORRENTE)));
-				daoContaPoupCor.salva(conta);
-				
+				daoContaPoupCor.salvar(conta);
+
 				TipoOperacao tipoOperacao = TipoOperacao.DEB;
 				try {
-				daoHistoricoTransacao.gravaHistorico(conta, conta, valor, tipoOperacao);
+					daoHistoricoTransacao.gravarHistorico(conta, conta, valor, tipoOperacao);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,23 +39,23 @@ public class BeanContaPoupancaCorrente extends BeanConta {
 			} else {
 				System.out.println("DEBITO - A conta não possui saldo suficiente para realizar a transferência.");
 			}
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return conta;
 	}
-	
+
 	@Override
 	public Conta credito(double valor, Conta conta) {
 		try {
 			if (valor > Constante.ZERO && conta.getNumero() > 0) {
 				double bonificacaoVariavelCredito = OperacaoServico.bonificacaoVariavelCredito(valor);
 				super.credito(bonificacaoVariavelCredito, conta);
-				daoContaPoupCor.salva(conta);
-				
+				daoContaPoupCor.salvar(conta);
+
 				TipoOperacao tipoOperacao = TipoOperacao.CRED;
 				try {
-					daoHistoricoTransacao.gravaHistorico(conta, conta, valor, tipoOperacao);
+					daoHistoricoTransacao.gravarHistorico(conta, conta, valor, tipoOperacao);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

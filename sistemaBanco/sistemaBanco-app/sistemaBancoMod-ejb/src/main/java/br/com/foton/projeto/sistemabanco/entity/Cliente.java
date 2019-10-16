@@ -25,20 +25,20 @@ public class Cliente extends Entidade {
 	 * 
 	 */
 	private static final long serialVersionUID = 8006215540980746248L;
-	
-	@Id 
-	@Column (name = "id_cliente")
+
+	@Id
+	@Column(name = "id_cliente")
 	private int idCliente;
-	
+
 	@Convert(converter = TitularidadeConversor.class)
 	@Column(name = "titularidade")
 	private Titularidade titularidade;
 
-	//Cliente tem a FK de Pessoa
-	@Column (name = "id_pessoa")
+	// Cliente tem a FK de Pessoa
+	@Column(name = "id_pessoa")
 	private int idPessoa;
-	
-	@OneToOne (fetch = FetchType.LAZY, optional = true)
-	@JoinColumn (name = "id_pessoa", referencedColumnName = "id_pessoa", foreignKey = @ForeignKey(name = "id_pessoaFK1"), insertable = false, updatable = false)
-	private Pessoa pessoa;      
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa", foreignKey = @ForeignKey(name = "id_pessoaFK1"), insertable = false, updatable = false)
+	private Pessoa pessoa;
 }
