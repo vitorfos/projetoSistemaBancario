@@ -7,13 +7,13 @@ import lombok.EqualsAndHashCode;
 
 @Embeddable
 @EqualsAndHashCode(callSuper = false)
-public class ClienteContaId extends Entidade{
+public class ClienteContaId extends Entidade {
 
 	private static final long serialVersionUID = 268577956817550686L;
 
 	@Column(name = "id_cliente")
 	private String idCliente;
-    
-    @Column(name = "id_conta")   
-	private String idConta;   
+
+	@Column(name = "id_conta")
+	private String idConta;
 }

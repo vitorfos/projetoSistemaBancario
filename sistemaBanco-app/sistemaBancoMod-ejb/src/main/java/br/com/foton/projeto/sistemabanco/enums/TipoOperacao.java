@@ -4,14 +4,14 @@ public enum TipoOperacao {
 
 	CRED("Credito"), DEB("Debito"), TRANSF("Transferencia");
 
-	private String tipoOperacao;
+	private String valor;
 
-	private TipoOperacao(String tipoOperacao) {
-		this.tipoOperacao = tipoOperacao;
+	private TipoOperacao(String valor) {
+		this.valor = valor;
 	}
 
-	public String getTipoOperacao() {
-		return tipoOperacao;
+	public String getValor() {
+		return valor;
 	}
 
 }

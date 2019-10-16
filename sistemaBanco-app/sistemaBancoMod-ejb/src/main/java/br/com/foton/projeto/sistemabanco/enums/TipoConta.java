@@ -4,13 +4,13 @@ public enum TipoConta {
 
 	CS("CONTA_SALARIO"), CPC("CONTA_POUPANCA_CORRENTE");
 
-	private String tipoConta;
+	private String valor;
 
-	private TipoConta(String tipoConta) {
-		this.tipoConta = tipoConta;
+	private TipoConta(String valor) {
+		this.valor = valor;
 	}
 
-	public String getTipoConta() {
-		return tipoConta;
+	public String getValor() {
+		return valor;
 	}
 }

@@ -4,13 +4,13 @@ public enum TipoPessoa {
 
 	F("Fisica"), J("Juridica");
 
-	private String tipoPessoa;
+	private String valor;
 
-	private TipoPessoa(String tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
+	private TipoPessoa(String valor) {
+		this.valor = valor;
 	}
 
-	public String getTipoPessoa() {
-		return tipoPessoa;
+	public String getValor() {
+		return valor;
 	}
 }
