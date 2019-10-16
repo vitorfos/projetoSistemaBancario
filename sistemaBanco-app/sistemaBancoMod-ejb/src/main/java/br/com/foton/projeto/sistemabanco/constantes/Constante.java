@@ -1,24 +1,26 @@
+
 package br.com.foton.projeto.sistemabanco.constantes;
 
-public class Constante {
+public class Constante
+{
 
-	// Constantes utilizadas nas operaçoes de debito das contas poupancaCorrente e
-	// salário
+   // Constantes utilizadas nas operaçoes de debito das contas poupancaCorrente e
+   // salário
 
-	// Mudei os valores das taxas para 0,2% e 0,5%
-	public static final double TX_OP_DEBITO_CONTA_POUP_CORRENTE = 1.005;
-	public static final double TX_OP_DEBITO_CONTA_SALARIO = 1.002;
+   // Mudei os valores das taxas para 0,2% e 0,5%
+   public static final double TX_OP_DEBITO_CONTA_POUP_CORRENTE = 1.005;// TODO: Utilizar BigDecimal
+   public static final double TX_OP_DEBITO_CONTA_SALARIO = 1.002;// TODO: Utilizar BigDecimal
 
-	// Constantes utilizadas nas operações de crédito da conta poupancaCorrente
+   // Constantes utilizadas nas operações de crédito da conta poupancaCorrente
 
-	// Bonus
-	public static final double BONUS_OP_CREDITO_MIL = 1.05;
-	public static final double BONUS_OP_CREDITO_CEM_MIL = 1.04;
-	public static final double BONUS_OP_CREDITO_ALTOS_VALORES = 1.01;
+   // Bonus
+   public static final double BONUS_OP_CREDITO_MIL = 1.05; // TODO: Utilizar BigDecimal
+   public static final double BONUS_OP_CREDITO_CEM_MIL = 1.04;// TODO: Utilizar BigDecimal
+   public static final double BONUS_OP_CREDITO_ALTOS_VALORES = 1.01;// TODO: Utilizar BigDecimal
 
-	// Valores
-	public static final int ZERO = 0;
-	public static final int MIL_REAIS = 1000;
-	public static final int CEM_MIL_REAIS = 100000;
+   // Valores
+   public static final int ZERO = 0;
+   public static final int MIL_REAIS = 1000;
+   public static final int CEM_MIL_REAIS = 100000;
 
 }
